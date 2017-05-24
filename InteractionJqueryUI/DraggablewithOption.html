@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel = "stylesheet">
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+</head>
+<body>
+<div id="div1" style="height: 50px;length:400px;background-color: beige">You cant move me!!</div>
+<div id="div2" style="height: 50px;length:400px;background-color: bisque">Drag happens after 50px</div>
+<div id="div3" style="height: 50px;length:400px;background-color: antiquewhite">Drag happen after 1000ms</div>
+<div id = "div4" style = "border:solid 1px;background-color:gainsboro;">
+    <span>You can drag me only within this div.</span><br /><br />
+</div>
+<div id = "div5" style = "border:solid 1px;background-color:grey;">
+    <span>You can drag me only along x axis.</span><br /><br />
+</div>
+<div id = "div6" style = "border:solid 1px;background:#eee; height:50px;">
+    <span>You can duplicate me....</span>
+</div>
+<div id = "div7" style = "border:solid 1px;background-color:gainsboro;">
+    <span>You can't move me. Dragging is disabled.</span><br><br>
+</div>
+<div id = "div8" style = "border:solid 1px;background-color:grey;">
+    <span>You can move me. Dragging is enabled.</span><br><br>
+</div>
+<div id = "div9" style = "border:solid 1px;background-color:gainsboro;">
+<span>Drag me to check the event method firing</span><br /><br />
+</div>
+
+<script>
+    $(document).ready(function () {
+     $("#div1").draggable({
+         disabled: true
+     });
+     $("#div2").draggable({
+         distance: 50
+     });
+     $("#div3").draggable({
+         delay: 1000
+     });
+     $("#div4 span").draggable({
+         containment: "#div4"
+     });
+     $("#div5 span").draggable({
+         axis: "x"
+     });
+     $("#div6 span").draggable({
+         helper: "clone"
+     });
+        $("#div7 span").draggable ();
+        $("#div7 span").draggable ('disable');
+        $("#div8 span").draggable ();
+        $("#div8 span").draggable ('enable');
+        $("#div9 span").draggable ({
+            cursor: "move",
+            axis : "x",
+            drag: function( event, ui ) {
+                alert("hi..");
+            }
+        });
+    })
+</script>
+</body>
+</html>
